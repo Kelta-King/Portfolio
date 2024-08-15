@@ -1,11 +1,11 @@
 const fileSystem = require("../Utils/fileSystem");
+const responses = require("../Utils/responses");
 
 function indexHandler(request, response) {
     var ret = fileSystem.readPublicFile("index.html");
     if(ret.substring(0, 6) == "Error:") {
-        console.log(ret);
-        response.statusCode = 500;
-        response.send(ret);        
+        console.error(ret);        
+        responses.internalServerError(response, ret);
         return;
     }
     response.send(ret);
