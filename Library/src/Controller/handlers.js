@@ -1,20 +1,23 @@
+const fileSystem = require("../Utils/fileSystem");
+
 function indexHandler(request, response) {
-    response.send({
-        "method": "Done",
-    });
+    var ret = fileSystem.readPublicFile("index.html");
+    if(ret.substring(0, 6) == "Error:") {
+        console.log(ret);
+        response.statusCode = 500;
+        response.send(ret);        
+        return;
+    }
+    response.send(ret);
 }
 
 function otherHandler(request, response) {
     try {
         const path = request.params[0];
-        response.send({
-            "method": path
-        });
+        response.send();
     } 
     catch (error) {
-        response.send({
-            "error": error.message
-        });
+        response.send("Error: " + error.message);
     }
 }
 
