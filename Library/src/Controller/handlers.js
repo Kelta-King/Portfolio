@@ -5,8 +5,7 @@ function indexHandler(request, response) {
     var ret = fileSystem.readPublicFile("index.html");
     if(ret.substring(0, 6) == "Error:") {
         console.error(ret);        
-        responses.internalServerError(response, ret);
-        return;
+        return responses.internalServerError(response, ret);        
     }
     response.send(ret);
 }

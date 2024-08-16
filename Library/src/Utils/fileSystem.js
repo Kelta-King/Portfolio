@@ -5,6 +5,9 @@ function readPublicFile(fileName) {
         if(!fileName.includes(".html")) {
             fileName += ".html";
         }
+        if(!fs.existsSync("./public/" + fileName)) {
+            return ("Error: File not found.");
+        }
         const data = fs.readFileSync("./public/" + fileName, 'utf8');
         return data;   
     } 
