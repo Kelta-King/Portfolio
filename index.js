@@ -1,124 +1,85 @@
-const options = {
-    "ParticleColor": "#D397F8",
-    "ParticleEdgeColor": "#A020F0",
-}
+const body = document.querySelector("body");
+const canvas = document.getElementById("particles-canvas");
+const context = canvas.getContext("2d");
 
-particlesJS('particles-bg',
-    {
-        "particles": {
-            "number": {
-                "value": 80,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": options["ParticleColor"]
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                },
-                "polygon": {
-                    "nb_sides": 5
-                },
-                "image": {
-                    "src": "img/github.svg",
-                    "width": 100,
-                    "height": 100
-                }
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": false,
-                "anim": {
-                    "enable": false,
-                    "speed": 1,
-                    "opacity_min": 0.1,
-                    "sync": false
-                }
-            },
-            "size": {
-                "value": 5,
-                "random": true,
-                "anim": {
-                    "enable": false,
-                    "speed": 40,
-                    "size_min": 0.1,
-                    "sync": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": options["ParticleEdgeColor"],
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 6,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "attract": {
-                    "enable": false,
-                    "rotateX": 600,
-                    "rotateY": 1200
-                }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
-                },
-                "onclick": {
-                    "enable": true,
-                    "mode": "push"
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 400,
-                    "line_linked": {
-                        "opacity": 1
-                    }
-                },
-                "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
-                },
-                "repulse": {
-                    "distance": 200
-                },
-                "push": {
-                    "particles_nb": 4
-                },
-                "remove": {
-                    "particles_nb": 2
-                }
-            }
-        },
-        "retina_detect": true,
-        "config_demo": {
-            "hide_card": false,
-            "background_color": "#b61924",
-            "background_image": "",
-            "background_position": "50% 50%",
-            "background_repeat": "no-repeat",
-            "background_size": "cover"
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+body.append(canvas);
+
+this.color = 0;
+const h1 = document.querySelector("#title");
+
+window.addEventListener("mousemove", (e) => {
+    // h1.style.color = `hsl(${this.color}, 100%, 85%)`;
+    canvas.style.background = `hsl(${this.color}, 100%, 4%)`;
+    for (let i = 0; i < 5; i++) {
+        particles.push(
+            new Particle(
+                e.x,
+                e.y,
+                Math.random() * 9 + 1,
+                `hsl(${this.color}, 100%, 50%)`
+            )
+        );
+    }
+    this.color++;
+});
+
+class Particle {
+    constructor(x, y, size, color) {
+        this.x = x;
+        this.y = y;
+        this.angle = Math.random() * (Math.PI * 2);
+        this.velocity = Math.random() * 150 + 50;
+        this.size = size;
+        this.color = color;
+        this.delete = false;
+        this.opacity = 1;
+    }
+
+    update(dt) {
+        this.x += Math.cos(this.angle) * this.velocity * dt;
+        this.y += Math.sin(this.angle) * this.velocity * dt;
+        if (this.opacity > 0) {
+            this.opacity = this.opacity - 0.2 * dt > 0 ? this.opacity - 0.2 * dt : 0;
+            this.size = this.size * this.opacity;
+        } else {
+            this.delete = true;
         }
     }
 
-);
+    draw(ctx) {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+let particles = [];
+let color = 0;
+
+//animation loop
+let lt = 0;
+function animate(ts) {
+    const dt = (ts - lt) / 1000;
+    particles = particles.filter((p) => p.delete === false);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+        particles[i].update(dt);
+        particles[i].draw(context);
+    }
+    lt = ts;
+    requestAnimationFrame(animate);
+}
+
+animate(0);
