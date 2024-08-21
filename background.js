@@ -10,15 +10,11 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-body.append(canvas);
-
-this.color = 0;
-const h1 = document.querySelector("#title");
+this.color = 200;
 
 window.addEventListener("mousemove", (e) => {
-    // h1.style.color = `hsl(${this.color}, 100%, 85%)`;
     canvas.style.background = `hsl(${this.color}, 100%, 4%)`;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         particles.push(
             new Particle(
                 e.x,

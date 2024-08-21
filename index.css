@@ -1,35 +1,19 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-.primary-background-color {
-    background-color: #0D0D0D !important;
-}
-
-.primary-text-color {
-    color: #E0E0E0 !important;
-}
-
-.accent-text-color {
-    color: #FFFFFF !important;
-}
-
-.primary-accent-color {
-    color: #00BFFF !important;
-}
-
-.secondary-accent-color {
-    color: #FF1493 !important;
-}
-
-.link-color {
-    color: #87CEFA !important;
-}
-
-.button-color {
-    background-color: #1E90FF !important;
-    color: #FFFFFF !important;
+:root {
+    --primaryBackgroundColor: #0D0D0D;
+    --primaryTextColor: #E0E0E0;
+    --accentTextColor: #FFFFFF;
+    --primaryAccentColor: #00BFFF;
+    --secondaryAccentColor: #FF1493;
+    --linkColor: #87CEFA;
+    --buttonColor: #1E90FF;
 }
 
 .foreground {
@@ -60,5 +44,33 @@
 }
 
 .introduction-data {
-    
+    text-align: center;
+    font-weight: 400;
+    font-size: xx-large;
+}
+
+.introduction-name {
+    color: var(--primaryAccentColor);
+}
+
+.introduction-titles {
+    font-size: xxx-large;
+}
+
+.typed-text {
+    color: var(--buttonColor);
+}
+
+.cursor.blink {
+    background: red;
+    animation: blink 0.8s ease-in-out infinite;
+}
+  
+@keyframes blink {
+    0%, 100% {
+      background: var(--primaryAccentColor);
+    }
+    40%, 50% {
+      background: transparent;
+    }
 }
