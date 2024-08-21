@@ -9,11 +9,11 @@
 :root {
     --primaryBackgroundColor: #0D0D0D;
     --primaryTextColor: #E0E0E0;
-    --accentTextColor: #FFFFFF;
+    --accentTextColor: #1E90FF;
     --primaryAccentColor: #00BFFF;
     --secondaryAccentColor: #FF1493;
     --linkColor: #87CEFA;
-    --buttonColor: #1E90FF;
+    --buttonColor: #0060c0;
 }
 
 .foreground {
@@ -58,11 +58,10 @@
 }
 
 .typed-text {
-    color: var(--buttonColor);
+    color: var(--accentTextColor);
 }
 
 .cursor.blink {
-    background: red;
     animation: blink 0.8s ease-in-out infinite;
 }
   
@@ -72,5 +71,74 @@
     }
     40%, 50% {
       background: transparent;
+    }
+}
+
+.text-box {
+    margin-top: 44px;
+    font-size: x-large;
+}
+
+.explore-btn {
+    color: var(--primaryTextColor);
+}
+
+.explore-btn:link,
+.explore-btn:visited {
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 4px;
+    transition: all .2s;
+    position: relative;
+}
+
+.explore-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--secondaryAccentColor);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.explore-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.explore-btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.explore-btn::after {
+    background-color: var(--buttonColor);
+}
+
+.explore-btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.explore-btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
     }
 }
