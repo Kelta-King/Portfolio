@@ -14,7 +14,7 @@ Set a background-color for ::-webkit-scrollbar-thumb */
 }
 
 html {
-    overflow: auto
+    /* overflow: scroll; */
 }
 
 body {
@@ -208,4 +208,34 @@ body {
     outline-offset: 15px;
     outline-color: rgba(255, 255, 255, 0);
     text-shadow: 1px 1px 2px #427388;
+}
+
+.nav{
+    background: #000000;
+    color: #FFF;
+    display: flex
+}
+.nav ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* width: 50%; */
+    margin-left: auto
+}
+ul li{
+    padding: 20px;
+    list-style: none
+}
+ul li a{
+    color: #FFF;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold
+}
+.sticky{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%
 }
