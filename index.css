@@ -38,6 +38,9 @@ body {
 }
 
 :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --particlesCanvas: #120012;
     --primaryBackgroundColor: #0D0D0D;
     --primaryTextColor: #E0E0E0;
     --accentTextColor: #1E90FF;
@@ -48,7 +51,7 @@ body {
 }
 
 .foreground {
-    color: #FFFFFF;
+    color: var(--white);
     position: relative;
     z-index: 2;
 }
@@ -63,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #120012;
+    background-color: var(--particlesCanvas);
     backdrop-filter: blur(10px);
 }
 
@@ -179,13 +182,13 @@ body {
 }
 
 .shining-border-button {
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
     display: block;
     font-size: 24px;
     font-weight: 400;
     line-height: 60px;
-    max-width: 350px;
+    max-width: 450px;
     margin: 0 auto 2em;
     margin-top: 30px;
     border-radius: 8px;
@@ -210,13 +213,56 @@ body {
     text-shadow: 1px 1px 2px #427388;
 }
 
+.scroll-animation {
+    /* display: inline-block; */
+	/* position: relative; */
+	animation: down 1.5s infinite;
+	-webkit-animation: down 1.5s infinite;
+	&::before {
+		content: '';
+		position: absolute;
+		/* top: -27px; */
+		/* left: 18px; */
+		width: 18px;
+		height: 18px;
+		border-left: 2px solid var(--white);
+  	border-bottom: 2px solid var(--white);
+		transform: rotate(-45deg);
+	}
+}
+
+@keyframes down {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translateY(15px);
+	}
+	40% {
+		transform: translate(0);
+	}
+}
+
+@-webkit-keyframes down {
+	0% {
+		transform: translate(0);
+	}
+	20% {
+		transform: translateY(15px);
+	}
+	40% {
+		transform: translate(0);
+	}
+}
+
+
 .nav{
-    background: #000000;
-    color: #FFF;
+    background: var(--black);
+    color: var(--white);
     display: flex
 }
 .nav ul{
-    margin: 0;
+    margin: 10px;
     padding: 0;
     display: flex;
     /* width: 50%; */
@@ -227,11 +273,16 @@ ul li{
     list-style: none
 }
 ul li a{
-    color: #FFF;
+    color: var(--white);
     display: block;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold
+}
+
+ul li a:hover{
+    transition-duration: 0.7s;
+    color: var(--secondaryAccentColor);
 }
 .sticky{
     position: fixed;
