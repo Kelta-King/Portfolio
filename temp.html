@@ -1,40 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Border with Border Radius</title>
-    <style>
-        .gradient-border {
-            position: relative;
-            display: inline-block;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-            font-family: Arial, sans-serif;
-
-            /* Rounded corners */
-            border-radius: 15px;
-            background: linear-gradient(90deg, var(--accentTextColor, #ff7f50), var(--secondaryAccentColor, #1e90ff));
-        }
-
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            border-radius: 15px;
-            padding: 10px; /* This creates the border */
-            background: white; /* The background of the content */
-        }
-    </style>
-</head>
-<body>
-    <div class="gradient-border">
-        This div has a gradient border with rounded corners!
-    </div>
-</body>
-</html>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 210 210" enable-background="new 0 0 210 210" xml:space="preserve">
+  <g>
+      <path d="M104.7,210C46.9,210,0.7,163.8,0.7,106C0.7,48.2,46.9,2,104.7,2s104,46.2,104,104C208.7,163.8,162.5,210,104.7,210z
+       M104.7,4.7C48.9,4.7,4.9,48.7,4.9,106c0,57.3,44,101.3,99.8,101.3c55.8,0,99.8-44,99.8-101.3C204.5,48.7,160.5,4.7,104.7,4.7z"/>
+      <path d="M124.2,143.3c0,6.7-6.3,12-12.3,12H83.8c-6,0-12.3-5.3-12.3-12l0-44.6H62.4l27.3-37.1l27.4,37.1h-9.2V143.3z
+       M106.9,144c3.7,0,6.9-3.2,6.9-6.9v-26.2c0-3.7-3.2-6.9-6.9-6.9H101c-3.7,0-6.9,3.2-6.9,6.9v26.2c0,3.7,3.2,6.9,6.9,6.9H106.9z
+       M86.2,144c3.7,0,6.9-3.2,6.9-6.9v-26.2c0-3.7-3.2-6.9-6.9-6.9h-5.9c-3.7,0-6.9,3.2-6.9,6.9v26.2c0,3.7,3.2,6.9,6.9,6.9H86.2z
+       M104.7,147.6c5.6,0,9.7-5.2,9.7-9.7V120c0-5.6-5.2-9.7-9.7-9.7h-2.8c-5.6,0-9.7,5.2-9.7,9.7v17.9c0,5.6,5.2,9.7,9.7,9.7H104.7z"/>
+  </g>
+  </svg>
+  

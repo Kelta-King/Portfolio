@@ -82,6 +82,7 @@ body {
     text-align: center;
     font-weight: 400;
     font-size: xx-large;
+    width: 100%;
 }
 
 .introduction-name {
@@ -290,6 +291,7 @@ ul li a:hover {
 }
 
 .sticky{
+    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
@@ -304,6 +306,38 @@ ul li a:hover {
     max-width: 1480px;
     margin: 0 auto;
     padding: 8px;
+}
+
+.about {
+    margin: 40px 0px;
+    text-align: center;
+}
+
+.section-title {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    margin: 10px 10px 0 0;
+    position: relative;
+    z-index: 2;
+}
+
+.underline-side{
+    display:inline-block;
+    position:relative;
+    z-index: 1;
+}
+  
+.underline-side::after{
+    content:'';
+    height:6px;
+    width:90%;
+    background:var(--accentTextColor);
+    position:absolute;
+    left:calc(100% - 80%);
+    bottom:-4px;
+    border-radius:40px;   
+    z-index: 1;
 }
 
 .about-container {
@@ -404,4 +438,14 @@ ul li a:hover {
 
 .skills-icon-text {
     margin-top: 2px;
+}
+
+.projects {
+    margin: 40px 0px;
+    text-align: center;
+}
+
+.contact {
+    margin: 40px 0px;
+    text-align: center;
 }

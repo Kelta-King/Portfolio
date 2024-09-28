@@ -1,4 +1,4 @@
-const textArray = ["Web Developer", "Software Developer", "Software Architect", "Tutor..."];
+const textArray = ["Web Developer", "Software Developer", "Tutor...", "Software Architect"];
 const typedText = document.querySelector(".typed-text");
 const cursor = document.querySelector(".cursor");
 
