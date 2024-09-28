@@ -595,8 +595,8 @@ ul li a:hover {
         svg {
             animation: flyaway 1.3s linear;
             top: -80px;
-            right: -1000px;
-
+            right: -280px;
+            display: none;
             path {
                 fill: #6AAA3B;
             }
@@ -610,6 +610,7 @@ ul li a:hover {
         top: 13px;
         right: 25px;
         height: 30px;
+        display: block;
     }
 
     5% {
@@ -617,28 +618,22 @@ ul li a:hover {
         top: 13px;
         right: 0px;
         height: 30px;
+        display: block;
     }
 
     20% {
         transform: rotate(-20deg);
         top: 13px;
-        right: -130px;
+        right: -30px;
         height: 45px;
     }
 
-    40% {
-        transform: rotate(10deg);
-        top: -40px;
-        right: -280px;
-        opacity: 1;
-    }
-
     100% {
-        transform: rotate(60deg);
-        top: -200px;
-        right: -1000px;
-        height: 0;
+        transform: rotate(10deg);
+        top: -20px;
+        right: -180px;
         opacity: 0;
+        display: none;
     }
 }
 
@@ -813,6 +808,10 @@ ul li a:hover {
     .project-left,
     .project-right {
         width: 100%;
+        padding:4px;
+    }
+    .project-right {
+        margin-top: 24px;
     }
     .contact-form-col-25,
     .contact-form-col-75,
@@ -837,5 +836,16 @@ ul li a:hover {
     }
     .skills-container-mobile {
         display: inline-block;
+    }
+    .contact-form-col-20,
+    .contact-form-col-80 {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .nav {
+        font-size: 12px;
+    }
+    ul li a {
+        font-weight: 600;
     }
 }
