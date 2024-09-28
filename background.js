@@ -78,4 +78,6 @@ function animate(ts) {
     requestAnimationFrame(animate);
 }
 
-animate(0);
+window.onload = function() {
+    animate(0);
+}
