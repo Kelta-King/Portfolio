@@ -699,6 +699,12 @@ ul li a:hover {
     padding: 20px;
 }
 
+.project-right-even-mobile {
+    display: none;
+    width: 100%;
+    padding: 20px;
+}
+
 .project-image-container {
     position: relative;
     display: inline-block;
@@ -790,6 +796,13 @@ ul li a:hover {
     .project-right-even {
         width: 100%;
     }
+    .project-right-even {
+        display: none;
+    }
+    .project-right-even-mobile {
+        display: block;
+        width: 100%;
+    }
     .about-data-left,
     .about-data-right {
         width: 100%;
@@ -829,6 +842,13 @@ ul li a:hover {
     .project-right-odd
     .project-right-even {
         margin-top: 24px;
+    }
+    .project-right-even {
+        display: none;
+    }
+    .project-right-even-mobile {
+        display: block;
+        width: 100%;
     }
     .contact-form-col-25,
     .contact-form-col-75,
