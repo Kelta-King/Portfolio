@@ -487,6 +487,7 @@ ul li a:hover {
     margin: 40px auto;
     max-width: 720px;
     font-size: 18px;
+    padding: 8px;
 }
 
 .input-field {
@@ -675,14 +676,25 @@ ul li a:hover {
     margin: 42px 0px;
     display: flex;
     flex-wrap: wrap;
+    padding: 12px 0px;
 }
 
-.project-left {
+.project-left-odd {
+    width: 40%;
+    padding: 20px;
+}
+
+.project-right-odd {
     width: 60%;
     padding: 20px;
 }
 
-.project-right {
+.project-left-even {
+    width: 60%;
+    padding: 20px;
+}
+
+.project-right-even {
     width: 40%;
     padding: 20px;
 }
@@ -716,7 +728,7 @@ ul li a:hover {
 
 .project-info {
     text-align: left;
-    margin-top: 16px;
+    margin: 24px 0px;
 }
 
 .project-title {
@@ -772,8 +784,10 @@ ul li a:hover {
 
 /* Medium screens (tablets) */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .project-left,
-    .project-right {
+    .project-left-odd,
+    .project-right-odd
+    .project-left-even,
+    .project-right-even {
         width: 100%;
     }
     .about-data-left,
@@ -805,12 +819,15 @@ ul li a:hover {
     .introduction-titles {
         font-size: 42px;
     }
-    .project-left,
-    .project-right {
+    .project-left-odd,
+    .project-right-odd,
+    .project-left-even,
+    .project-right-even {
         width: 100%;
         padding:4px;
     }
-    .project-right {
+    .project-right-odd
+    .project-right-even {
         margin-top: 24px;
     }
     .contact-form-col-25,
@@ -827,8 +844,8 @@ ul li a:hover {
         display: flex;
         flex-direction: column;
     }
-    .project-left,
-    .project-right {
+    .project-left-odd,
+    .project-right-odd {
         width: 100%;
     }
     .skills-container {
