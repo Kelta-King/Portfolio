@@ -1,48 +1,45 @@
-async function sendPost() {
-    const xhttp = new XMLHttpRequest();
+function updateErrorMessage(message) {
+    var status = document.getElementById("contact-form-status");
+    status.style.color = "#ff2e2e";
+    status.innerHTML = message;
+    document.querySelector(".contact-button p").innerText = "Send";
+}
 
-    const response = await new Promise((resolve, reject) => {
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                if (this.status === 200) {
-                    console.log("Resolve");
-                    resolve(this.responseText);
+function updateSuccessMessage(message) {
+    var status = document.getElementById("contact-form-status");
+    status.style.color = "#31ff2e";
+    status.innerHTML = message;
+    document.querySelector(".contact-button").classList.add("clicked");
+    document.querySelector(".contact-button p").innerText = "Sent!";
+}
+
+var form = document.getElementById("contact-form");
+
+async function handleSubmit(event) {
+    event.preventDefault();
+    document.querySelector(".contact-button p").innerHTML = "<i class=\"fa fa-spinner fa-spin\"></i> Loading";
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            updateSuccessMessage("Thanks for your submission!");
+            form.reset()
+        } else {
+            response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                    updateErrorMessage(data["errors"].map(error => error["message"]).join(", "));
                 } else {
-                    console.log("Reject");
-                    reject('Error: ' + this.status);
+                    updateErrorMessage("Oops! There was a problem submitting your form");
                 }
-            }
-            else {
-                console.log("Not ready yet");
-            }
-        };
-
-        xhttp.open("POST", "https://formsubmit.co/keltaking999@gmail.com", true);
-
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        const params = "name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email) + "&message=" + encodeURIComponent(message);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send(params);
+            })
+        }
+    }).catch(error => {
+        updateErrorMessage("Oops! There was a problem submitting your form");
     });
-    console.log("Response: " + JSON.stringify(response));
-    return response;
 }
-
-document.querySelector(".contact-button").onclick = async function (event) {
-    event.preventDefault(); 
-    this.classList.toggle("clicked");
-    const val = document.querySelector(".contact-button p").innerText;
-    if(val === "Sent!") {
-        document.querySelector(".contact-button p").innerText = "Send" 
-    }
-    else { 
-        console.log(document.querySelector(".contact-form"));
-        
-        document.querySelector(".contact-form").submit();
-        // event.target.submit();
-        document.querySelector(".contact-button p").innerText = "Sent!";
-    }
-}
+form.addEventListener("submit", handleSubmit)

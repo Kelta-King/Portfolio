@@ -485,6 +485,7 @@ ul li a:hover {
 
 .contact-form {
     margin: 40px auto;
+    margin-top: 20px;
     max-width: 720px;
     font-size: 18px;
     padding: 8px;
@@ -594,7 +595,7 @@ ul li a:hover {
         cursor: default;
 
         svg {
-            animation: flyaway 1.3s linear;
+            animation: flyaway 2s linear;
             top: -80px;
             right: -280px;
             display: none;
@@ -885,4 +886,21 @@ ul li a:hover {
     ul li a {
         font-weight: 600;
     }
+}
+
+.form-button-load {
+    background-color: #04AA6D; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 16px; /* Some padding */
+    font-size: 19px; /* Set a font size */
+    margin: 20px auto;
+    height: 60px;
+    width: 200px;
+    cursor: pointer; 
+    background-color: var(--buttonColor);
+    border: 2px solid #A6E0EE;
+    color: var(--primaryTextColor);
+    border-radius: 8px;
+    display: none;
 }
