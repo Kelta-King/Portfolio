@@ -595,7 +595,7 @@ ul li a:hover {
         cursor: default;
 
         svg {
-            animation: flyaway 2s linear;
+            animation: flyaway 1.3s linear;
             top: -80px;
             right: -280px;
             display: none;
@@ -888,11 +888,11 @@ ul li a:hover {
     }
 }
 
-.form-button-load {
+.download-button {
     background-color: #04AA6D; /* Green background */
     border: none; /* Remove borders */
     color: white; /* White text */
-    padding: 16px; /* Some padding */
+    padding: 16px 20px; /* Some padding */
     font-size: 19px; /* Set a font size */
     margin: 20px auto;
     height: 60px;
@@ -902,5 +902,56 @@ ul li a:hover {
     border: 2px solid #A6E0EE;
     color: var(--primaryTextColor);
     border-radius: 8px;
-    display: none;
+    position: relative;
+    i {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        height: 50px;
+        width: auto;
+        transition: transform .15s;
+        path {
+            fill: var(--primaryTextColor);
+        }
+    }
+    &:hover {
+        background-color: var(--buttonColor);
+
+        i {
+            animation: belling 0.5s linear;
+        }
+    }
 }
+
+@keyframes belling {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    30% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+/* 
+    font-size: 19px;
+    overflow: visible;
+    border-radius: 8px;
+    position: relative;
+    padding-right: 30px;
+    background-color: var(--buttonColor);
+    border: 2px solid #A6E0EE;
+    color: var(--primaryTextColor);
+    display: block;
+    margin: 20px auto;
+    height: 60px;
+    width: 200px;
+    cursor: pointer; 
+*/
